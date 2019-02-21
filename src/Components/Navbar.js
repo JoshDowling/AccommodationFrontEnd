@@ -9,8 +9,8 @@ class Navbar extends Component {
                     <a className="navbar-brand" href="/home"><img src={require("../Images/qa-logo.png")} /></a>
                     <a className="Title">Accommodation Management</a>
                         <ul id="nav-ul">
+                            <li><Link to="/home">Home</Link></li>
                             <li><Link to="/addapartment">Add Apartment</Link></li>
-                            <li><Link to="/updateform">Update Trainee Info</Link></li>
                             <li><Link to="/deleteapartment">Delete Apartment</Link></li>
                             <li><Link to="/" onClick={() => { sessionStorage.removeItem("Account"); window.location.reload() }}>Log out</Link></li>
                         </ul>

@@ -4,7 +4,7 @@ class ApartmentDetail extends Component {
   render() {
     return (
       <div className="App">
-        Hello From MainScreen
+        Hello From Apartment detail screen
       </div>
     );
   }

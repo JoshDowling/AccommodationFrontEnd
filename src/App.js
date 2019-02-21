@@ -7,8 +7,8 @@ import DeleteApartment from './Components/DeleteApartment';
 import AddApartment from './Components/AddApartment';
 import Login from './Components/Login';
 import Home from './Components/Home';
+import ApartmentDetails from './Components/ApartmentDetails';
 import MainScreen from './Components/MainScreen';
-
 
 
 class App extends Component {
@@ -18,12 +18,14 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <div className= "Mainpara">
-          <Route exact path="/Mainscreen" component={MainScreen} />
+
            <Route exact path="/" component={Login} />
-           <Route exact path="/home" component={Home} /> 
+           <Route exact path="/apartmentdetails" component={ApartmentDetails} />
+           <Route exact path="/Mainscreen" component={MainScreen} />
            {/* {(sessionStorage.getItem("Account"))=== null? <Route exact path="/addapartment" component={Login} />:<Route exact path="/addapartment" component={AddApartment} />}\*/} <Route exact path="/addapartment" component={AddApartment} /> 
            {/* {(sessionStorage.getItem("Account"))=== null? <Route exact path="/delete" component={Login} />:<Route exact path="/delete" component={DeleteForm} /> } */} <Route exact path="/deleteapartment" component={DeleteApartment} />
            {/* {(sessionStorage.getItem("Account"))=== null? <Route exact path="/updatetrainee" component={Login} />:<Route exact path="/updatetrainee" component={UpdateTrainee} />  } */} <Route exact path="/updateform" component={UpdateForm} />
+            {/* {(sessionStorage.getItem("Account"))=== null? <Route exact path="/home" component={Login} />:<Route exact path="/home" component={Home} />  } */}<Route exact path="/home" component={Home} /> 
                </div> 
         </div>
       </BrowserRouter>

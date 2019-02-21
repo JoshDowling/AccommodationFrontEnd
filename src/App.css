@@ -27,6 +27,47 @@ width:25%;
 
 }
 
+#border {
+  border-style: solid;
+  border-width: thick;
+  width: 60%;
+}
+
+#border-header {
+  border-style: solid;
+  border-width: thick;
+  font-size: 30px;
+  font-weight: bold;
+  width: 60%;
+}
+
+#border-header2 {
+  border-style: solid;
+  border-width: thick;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 40px;
+  width: 60%;
+}
+
+.right-hand-side-table {
+  top: 145px;
+  right: 200px;
+}
+
+#current-upcoming-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 60% !important;
+  margin: 0 auto;
+  margin-bottom: 20px !important;
+}
+
+#current-upcoming-container > div > ul {
+ width: 600px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -68,3 +109,4 @@ width:25%;
     transform: rotate(360deg);
   }
 }
+

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { TestURL, GetAll} from '../Constants'
 
 class Login extends Component {
   constructor() {
@@ -13,13 +14,13 @@ class Login extends Component {
 
   checkUser = () => {
 
-    axios.post(' #URL# ', {
+    axios.post(TestURL+GetAll, {
 
       username: this.state.username,
       password: this.state.password
     })
       .then((response) => {
-        if (response.data[0] == this.state.username) {
+        if (response.data[0] === this.state.username) {
           sessionStorage.setItem("logUser", response.data[0]);
 
         }

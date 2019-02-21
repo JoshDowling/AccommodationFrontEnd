@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BaseURL, DeleteApt} from '../Constants'
 
 class DeleteApartment extends Component {
 
@@ -30,6 +31,12 @@ class DeleteApartment extends Component {
     }
 
     handleAccountToDelete = (id) => {
+
+        axios.delete(BaseURL+DeleteApt).then(response => {
+            this.setState({ aptmt: response.data }, () => {
+            })
+          })
+
         axios({
             method: "delete",
             // url:  Constants.hotspot_ip + ":8080/HotSpot-Project/api/userAccount/deleteAccount/" + id,

@@ -134,4 +134,3 @@ class UpdateForm extends Component {
 }
 
 export default UpdateForm;
-

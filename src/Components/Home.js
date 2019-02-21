@@ -1,25 +1,8 @@
 import React, { Component } from 'react';
 import FilterBar from '../Components/FilterBar';
- function getJson() {
-        return [{ "buildingName": "Heart", "apartmentName": "2101", "roomNumber": "2", "fullName": "Husnan Sultan",  }];
-    }
+
+
 class Home extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            json: []
-        }
-    }
-
-   
-    componentDidMount() {
-        this.setState((prevState) => {
-            return {
-                json: getJson()
-            }
-        })
-    }
-
     render() {
         return (
             <div className="table">
@@ -38,32 +21,49 @@ class Home extends Component {
                             <th scope="col">End Date</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        {this.state.json.map((data, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{data.firstname}</td>
-                                    <td>{data.lastname}</td>
-                                    <td>{data.lastname}</td>
-                                    <td>{data.lastname}</td>
-                                    <td>{data.lastname}</td>
-                                    <td>{data.lastname}</td>
-                                    <td>{data.lastname}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody >
-                </table >
-            </div >
+                        <tr className="table-danger">
+                            <td>X1</td>
+                            <th><a href="/apartmentdetails">1502</a></th>
+                            <td>43</td>
+                            <td>Henry Chia</td>
+                            <td>December Intake</td>
+                            <td>01/12/2018</td>
+                            <td>28/02/2019</td>
+                        </tr>
+                        <tr className="table-danger">
+                            <td>Number One</td>
+                            <th><a href="/apartmentdetails">1803</a></th>
+                            <td>14</td>
+                            <td>Josh Dowling</td>
+                            <td>December Intake</td>
+                            <td>01/12/2018</td>
+                            <td>28/02/2019</td>
+                        </tr>
+                        <tr className="table-warning">
+                            <td>Heart</td>
+                            <th><a href="/apartmentdetails">2201</a></th>
+                            <td>20</td>
+                            <td>Jim Bob</td>
+                            <td>February Intake</td>
+                            <td>01/02/2019</td>
+                            <td>01/04/2019</td>
+                        </tr>
+                        <tr className="table-primary">
+                            <td >Number One</td>
+                            <th scope="row"><a href="/apartmentdetails">1101</a></th>
+                            <td>34</td>
+                            <td>Beyonce Knowles</td>
+                            <td>March Intake</td>
+                            <td>01/03/2019</td>
+                            <td>01/05/2019</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
 
 export default Home;
-
-
-
-
-
-
