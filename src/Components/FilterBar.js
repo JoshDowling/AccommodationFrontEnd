@@ -10,7 +10,7 @@ class FilterBar extends Component {
       <div class="input-group" >
        <input id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" />
        <div class="input-group-btn" >
-        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button>
         <div class="dropdown-menu dropdown-menu-right" >
            <ul class="category_filters" >
             <li >
@@ -22,9 +22,9 @@ class FilterBar extends Component {
             <li >
              <input type="radio" name="radios" id="Marketing" value="Marketing" /><label class="category-label" for="Marketing" >Marketing</label>
             </li>
-            <li >
+             <li >
              <input type="radio" name="radios" id="Programming" value="Programming" /><label class="category-label" for="Programming" >Programming</label>
-            </li>
+            </li> 
             <li >
              <input type="radio" name="radios" id="Sales" value="Sales" /><label class="category-label" for="Sales" >Sales</label>
             </li>
@@ -33,7 +33,7 @@ class FilterBar extends Component {
             </li>
            </ul>
         </div>
-        <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
+        <button id="searchBtn" type="button" class="btn btn-primary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
        </div>
       </div>
      </div>
