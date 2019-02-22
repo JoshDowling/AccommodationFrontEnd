@@ -12,12 +12,13 @@ class Login extends Component {
 
   checkUser = () => {
 
-    axios.post(TestURL + CheckPassword, {
-
+    axios.post(TestURL + CheckPassword +, {
       password: this.state.password
     })
       .then((response) => {
-        if (response.data[0] === this.state.username) {
+        let message = response.data;
+        console.log(message);
+        if (response.data[0] === this.state.password) {
           sessionStorage.setItem("logUser", response.data[0]);
 
         }
