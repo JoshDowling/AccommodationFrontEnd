@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { TestURL, GetAll} from '../Constants'
+import { TestURL, CheckPassword} from '../Constants'
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      account: [],
-      username: null,
       password: null
     };
   }
 
   checkUser = () => {
 
-    axios.post(TestURL+GetAll, {
+    axios.post(TestURL + CheckPassword, {
 
       password: this.state.password
     })
