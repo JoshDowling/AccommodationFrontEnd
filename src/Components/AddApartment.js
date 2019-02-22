@@ -47,7 +47,8 @@ class AddApartment extends Component {
                 console.log(error);
             });
             alert("New Apartment has been added into the system.") 
-            this.props.history.push("/home")
+            this.props.history.push("/home");
+            window.location.reload(); 
         }
 
     handleSubmit = event => {

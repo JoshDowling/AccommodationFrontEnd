@@ -1,48 +1,33 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BaseURL, DeleteApt} from '../Constants'
+import { TestURL, DeleteApt, GetAll} from '../Constants'
 
 class DeleteApartment extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            userName: null,
-            password: null,
+            apartmentNumber: null,
+            apartmentBuilding: null,
         }
     }
 
-    handleUserName = event => {
+    handleApartmentNumber = event => {
         this.setState({
-            userName: event.target.value
+            apartmentNumber: event.target.value
         });
     }
 
-    handlePassword = event => {
+    handleApartmentBuilding = event => {
         this.setState({
-            password: event.target.value
+            apartmentBuilding: event.target.value
         });
     }
 
-    clearSession = () => {
-        sessionStorage.clear();
-        this.props.history.push("/");
-    }
-
-    handleAccountToDelete = (id) => {
-
-        axios.delete(BaseURL+DeleteApt).then(response => {
-            this.setState({ aptmt: response.data }, () => {
-            })
-          })
-
-        axios({
-            method: "delete",
-            // url:  Constants.hotspot_ip + ":8080/HotSpot-Project/api/userAccount/deleteAccount/" + id,
-        }).then(response => {
-            let deleteAccount = response.data;
-            this.clearSession();
-            alert("Account has successfully been deleted.");
+    handleApartmentToDelete = (id) => {
+        axios.delete(TestURL + DeleteApt + id)
+        .then(response => {
+            alert("Apartment has successfully been deleted.");
             this.props.history.push("/");
         });
 
@@ -51,16 +36,17 @@ class DeleteApartment extends Component {
     handleSubmit = () => {
         axios({
             method: "get",
-            // url: Constants.hotspot_ip + ":8080/HotSpot-Project/api/userAccount/getAllAccounts",
+            url: TestURL + GetAll,
         }).then(response => {
-            let userAccounts = response.data;
-            console.log(userAccounts);
-            for (let account = 0; account < userAccounts.length; account++) {
-                if ((this.state.userName === this.state.loggedInUser.userName) &&
-                    (this.state.password === this.state.loggedInUser.password)) {
-                    this.handleAccountToDelete(this.state.loggedInUser.userID);
+            let apartmentLists = response.data;
+            
+            for (let i = 0; i < apartmentLists.length; i++) {
+                if (this.state.apartmentNumber == apartmentLists[i].apartmentNumber &&
+                    this.state.apartmentBuilding == apartmentLists[i].apartmentBuilding) {
+                    this.handleApartmentToDelete(apartmentLists[i].apartmentId);
                 }
             }
+            window.location.reload(); 
         })
     }
 
@@ -78,14 +64,14 @@ class DeleteApartment extends Component {
                 </div>
                                 <fieldset onSubmit={this.handleSubmit}>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUserName} placeholder="Apartment Number" name="username" type="text" required/>
+                                        <input className="form-control input-lg" onChange={this.handleApartmentBuilding} placeholder="Apartment Name" name="username" type="text" required/>
                                     </div>
                                     <div className="form-group has-success">
-                                        <input id="password" className="form-control input-lg" onChange={this.handlePassword} placeholder="Apartment Building" name="password" type="text" required/>
+                                        <input id="password" className="form-control input-lg"onChange={this.handleApartmentNumber} placeholder="Apartment Number" type="text" required/>
                                     </div>
                                     <div className="checkbox">
                                         <label className="small">
-                                            <input name="terms" type="checkbox" required/>I confirm I wish to delete the apartment
+                                            <input name="terms" type="checkbox" required={true}/>I confirm I wish to delete the apartment
                                         </label>
                                     </div>
                                     <input className="btn btn-lg btn-primary btn-block" onClick={this.handleSubmit} value="Delete Apartment" type="submit" />

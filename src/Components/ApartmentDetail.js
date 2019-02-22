@@ -5,19 +5,7 @@ class ApartmentDetail extends Component {
 
   render() {
     return (
-      <BootstrapTable data={ "products" }>
-        <TableHeaderColumn dataField='id' isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-        <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
-      </BootstrapTable>
-    );
-  }
-}
-
-export default ApartmentDetail;
-
-
-{/* <div id="current-upcoming-container">
+      <div id="current-upcoming-container">
           <div>
             <ul className="list-group">
               <li id="border-header" className="list-group-item">Current:</li>
@@ -74,4 +62,11 @@ export default ApartmentDetail;
               <li id="border" className="list-group-item">Notes: NA</li>
             </ul>
           </div>
-        </div>  */}
+        </div>
+    );
+  }
+}
+
+export default ApartmentDetail;
+
+

@@ -12,7 +12,7 @@ class Navbar extends Component {
                             <li><Link to="/home">Home</Link></li>
                             <li><Link to="/addapartment">Add Apartment</Link></li>
                             <li><Link to="/deleteapartment">Delete Apartment</Link></li>
-                            <li><Link to="/" onClick={() => { sessionStorage.removeItem("Account"); window.location.reload() }}>Log out</Link></li>
+                            {(sessionStorage.getItem("logUser"))=== null? null :<li><Link to="/" onClick={() => { sessionStorage.removeItem("logUser"); window.location.reload() }}>Log out</Link></li>}
                         </ul>
 
                     </nav>
