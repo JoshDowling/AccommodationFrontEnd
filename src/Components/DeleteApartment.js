@@ -9,7 +9,6 @@ class DeleteApartment extends Component {
         this.state = {
             userName: null,
             password: null,
-            loggedInUser: JSON.parse(sessionStorage.getItem("Account")),
         }
     }
 

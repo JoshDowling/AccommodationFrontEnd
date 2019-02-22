@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { TestURL, CreateApt} from '../Constants';
 
 class AddApartment extends Component {
 
@@ -21,60 +22,109 @@ class AddApartment extends Component {
         }
     }
 
-    createAccount = () => {
+    createApartment = () => {
         axios({
             method: "post",
-            // url: Constants.hotspot_ip + ":8080/HotSpot-Project/api/userAccount/createAccount",
+            url: TestURL + CreateApt,
             data: {
-                userName: this.state.userName,
-                userFullName: this.state.userFullName,
-                emailAddress: this.state.emailAddress,
-                password: this.state.password
+                apartmentNumber: this.state.apartmentNumber,
+                apartmentBuilding: this.state.apartmentBuilding,
+                roomNumber: this.state.roomNumber,
+                studentName: this.state.studentName,
+                intake: this.state.intake,
+                startDate: this.state.startDate,
+                endDate: this.state.endDate,
+                cleanStatus: this.state.cleanStatus,
+                occupied: this.state.occupied,
+                ensuite: this.state.ensuite,
+                bedStatus: this.state.bedStatus,
+                notes: this.state.notes,
             }
         })
             .then(response => {
-                let bannedUser = null;
-                bannedUser = response.data.message
-                alert(bannedUser)
             })
             .catch(function (error) {
                 console.log(error);
-            }); 
-            this.props.history.push("/login")
+            });
+            alert("New Apartment has been added into the system.") 
+            this.props.history.push("/home")
         }
 
     handleSubmit = event => {
         event.preventDefault();
-        this.createAccount();
-        console.log(this.state.userName);
+        this.createApartment();
     }
 
-    handleUsername = event => {
+    handleApartmentNumber = event => {
         this.setState({
-            userName: event.target.value
+            apartmentNumber: event.target.value
         });
-        console.log(this.state.userName);
     }
 
-    handleEmail = event => {
+    handleApartmentBuilding = event => {
         this.setState({
-            emailAddress: event.target.value
+            apartmentBuilding: event.target.value
         });
-        console.log(this.state.emailAddress);
     }
 
-    handleFullname = event => {
+    handleRoomNumber = event => {
         this.setState({
-            userFullName: event.target.value
+            roomNumber: event.target.value
         });
-        console.log(this.state.userFullName);
     }
 
-    handlePassword = event => {
+    handleStudentName = event => {
         this.setState({
-            password: event.target.value
+            studentName: event.target.value
         });
-        console.log(this.state.password);
+    }
+
+    handleIntake = event => {
+        this.setState({
+            intake: event.target.value
+        });
+    }
+
+    handleStartDate = event => {
+        this.setState({
+            startDate: event.target.value
+        });
+    }
+
+    handleEndDate = event => {
+        this.setState({
+            endDate: event.target.value
+        });
+    }
+
+    handleCleanStatus = event => {
+        this.setState({
+            cleanStatus: event.target.value
+        });
+    }
+
+    handleOccupied = event => {
+        this.setState({
+            occupied: event.target.value
+        });
+    }
+
+    handleEnsuite = event => {
+        this.setState({
+            ensuite: event.target.value
+        });
+    }
+
+    handleBedStatus = event => {
+        this.setState({
+            bedStatus: event.target.value
+        });
+    }
+
+    handleNotes = event => {
+        this.setState({
+            notes: event.target.value
+        });
     }
 
     render() {
@@ -91,40 +141,40 @@ class AddApartment extends Component {
                     </div>
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Apartment Number" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleApartmentNumber} placeholder="Apartment Number" name="apartmentNumber" type="text" />
                                     </div>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleFullname} placeholder="Apartment Building" name="fullname" type="text" minLength="4" required/>
+                                        <input className="form-control input-lg" onChange={this.handleApartmentBuilding} placeholder="Apartment Building" name="apartmentBuilding" type="text" />
                                     </div>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Room Number" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleRoomNumber} placeholder="Room Number" name="roomNumber" type="text" />
                                     </div>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Student Name" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleStudentName} placeholder="Student Name" name="studentName" type="text" />
                                     </div>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Intake (Month)" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleIntake} placeholder="Intake (Month)" name="intake" type="text"/>
                                     </div>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Start Date" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleStartDate} placeholder="Start Date" name="startDate" type="text"/>
                                     </div>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="End Date" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleEndDate} placeholder="End Date" name="endDate" type="text"/>
                                     </div>
                                      <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Clean Status" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleCleanStatus} placeholder="Clean Status" name="cleanStatus" type="text"/>
                                     </div>
                                      <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Occupied: True or False" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleOccupied} placeholder="Occupied: True or False" name="occupied" type="text"/>
                                     </div>
                                      <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Ensuite: True or False" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleEnsuite} placeholder="Ensuite: True or False" name="ensuite" type="text"/>
                                     </div>
                                      <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleUsername} placeholder="Bed Status" name="username" type="text" minLength="2" required/>
+                                        <input className="form-control input-lg" onChange={this.handleBedStatus} placeholder="Single/Double Bed" name="bedStatus" type="text"/>
                                     </div>
                                     <div className="form-group has-error">
-                                        <input className="form-control input-lg" onChange={this.handleEmail} placeholder="Notes" name="email" type="email" pattern=".+@gmail.com" required/>
+                                        <input className="form-control input-lg" onChange={this.handleNotes} placeholder="Notes" name="notes" type="text"/>
                                     </div>
                                     <input className="btn btn-lg btn-primary btn-block" value="Add New Apartment" type="submit" />
 

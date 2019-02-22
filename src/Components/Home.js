@@ -1,69 +1,91 @@
 import React, { Component } from 'react';
-import FilterBar from '../Components/FilterBar';
-
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+import axios from 'axios';
+import { TestURL, GetAll} from '../Constants'
 
 class Home extends Component {
-    render() {
-        return (
-            <div className="table">
-                <div className="filterbar">
-                    <FilterBar />
-                </div>
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Building Name</th>
-                            <th scope="col">Apartment Number</th>
-                            <th scope="col">Room Number</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Intake (Month)</th>
-                            <th scope="col">Start Date</th>
-                            <th scope="col">End Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="table-danger">
-                            <td>X1</td>
-                            <th><a href="/apartmentdetails">1502</a></th>
-                            <td>43</td>
-                            <td>Henry Chia</td>
-                            <td>December Intake</td>
-                            <td>01/12/2018</td>
-                            <td>28/02/2019</td>
-                        </tr>
-                        <tr className="table-danger">
-                            <td>Number One</td>
-                            <th><a href="/apartmentdetails">1803</a></th>
-                            <td>14</td>
-                            <td>Josh Dowling</td>
-                            <td>December Intake</td>
-                            <td>01/12/2018</td>
-                            <td>28/02/2019</td>
-                        </tr>
-                        <tr className="table-warning">
-                            <td>Heart</td>
-                            <th><a href="/apartmentdetails">2201</a></th>
-                            <td>20</td>
-                            <td>Jim Bob</td>
-                            <td>February Intake</td>
-                            <td>01/02/2019</td>
-                            <td>01/04/2019</td>
-                        </tr>
-                        <tr className="table-primary">
-                            <td >Number One</td>
-                            <th scope="row"><a href="/apartmentdetails">1101</a></th>
-                            <td>34</td>
-                            <td>Beyonce Knowles</td>
-                            <td>March Intake</td>
-                            <td>01/03/2019</td>
-                            <td>01/05/2019</td>
-                        </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        );
+  state = {
+
+    aptmt: [],
+
+   };
+
+  constructor(props) {
+    super(props);
+
+  axios.get(TestURL+GetAll).then(response => {
+    this.setState({ aptmt: response.data }, () => {
+      console.log(response.data);
+      console.log(this.state.aptmt.occupied);
+      console.log(this.state.aptmt.apartmentBuilding);
+    })
+  })
+ }
+
+
+ getApartmentDetails(){
+   
+ }
+
+
+  popWorkingList() {
+
+    var temp = [];
+
+    for (let i = 0; i < this.state.aptmt.length; i++) {
+      console.log(this.state.aptmt[i].occupied);
+      if (this.state.aptmt[i].occupied === false){
+
+        // console.log(this.state.aptmt[i].occupied);
+
+      temp.push({
+        apartmentBuilding: this.state.aptmt[i].apartmentBuilding,
+        apartmentName: this.state.aptmt[i].apartmentNumber,
+        roomNumber: this.state.aptmt[i].roomNumber,
+        studentName: this.state.aptmt[i].studentName,
+        intake: this.state.aptmt[i].intake,
+        startDate: this.state.aptmt[i].startDate,
+        endDate: this.state.aptmt[i].endDate
+      });
+   }
+      this.setState({ aptmt: temp });
+     }
+  }
+  
+  render() {
+
+    if (this.props.changed) {
+      this.state.aptmt.push({
+        apartmentBuilding: this.props.apartmentBuilding,
+        apartmentNumber: this.props.apartmentNumber,
+        roomNumber: this.props.roomNumber,
+        studentName: this.props.studentName,
+        intake: this.props.intake,
+        startDate: this.props.startDate,
+        endDate: this.props.endDate,
+       
+      });
     }
+
+    return (<div>
+      
+      <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+      <BootstrapTable ref='table' data={this.state.aptmt} search strictSearch={true}  striped={true} hover={true}>
+        <TableHeaderColumn dataField='apartmentBuilding' dataSort={true}>Building Name</TableHeaderColumn>
+        <TableHeaderColumn dataField='apartmentNumber' isKey={true} dataSort={true} onClick= {'/apartmentdetails'} > Apartment Number</TableHeaderColumn>
+        <TableHeaderColumn dataField='roomNumber' dataSort={true} >Room Number</TableHeaderColumn>
+        <TableHeaderColumn dataField='studentName' dataSort={true}>Full Name</TableHeaderColumn>
+        <TableHeaderColumn dataField='intake' dataSort={true}>Intake (Month)</TableHeaderColumn>
+        <TableHeaderColumn dataField='startDate' dataSort={true}>Start Date</TableHeaderColumn>
+        <TableHeaderColumn dataField='endDate' dataSort={true}>End Date</TableHeaderColumn>
+      </BootstrapTable>
+
+    </div>
+    );
+  }
 }
 
 export default Home;
