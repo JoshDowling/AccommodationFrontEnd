@@ -33,7 +33,7 @@ class Home extends Component {
 
     for (let i = 0; i < this.state.aptmt.length; i++) {
       console.log(this.state.aptmt[i].occupied);
-      if (this.state.aptmt[i].occupied === false){
+      if (this.state.aptmt[i].occupied == "false"){
 
         // console.log(this.state.aptmt[i].occupied);
 

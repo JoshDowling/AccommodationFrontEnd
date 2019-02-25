@@ -28,7 +28,7 @@ class DeleteApartment extends Component {
         axios.delete(TestURL + DeleteApt + id)
         .then(response => {
             alert("Apartment has successfully been deleted.");
-            this.props.history.push("/");
+            this.props.history.push("/home");
         });
 
     }
