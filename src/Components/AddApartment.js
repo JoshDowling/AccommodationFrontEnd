@@ -56,7 +56,6 @@ class AddApartment extends Component {
         this.createApartment();
     }
 
-
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -74,7 +73,7 @@ class AddApartment extends Component {
                             <div className="card card-body">
                                 <h3 className="text-center mb-4">Add A New Apartment</h3>
                                 <div className="alert alert-danger">
-                                    <a className="close font-weight-light" data-dismiss="alert" href="">×</a>Please enter all fields to add an apartment to the list. <br/>If field is not applicable at this time, please enter n/a.
+                                    <a className="close font-weight-light" data-dismiss="alert" href="/">×</a>Please enter all fields to add an apartment to the list. <br/>If field is not applicable at this time, please enter n/a.
                     </div>
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group has-error">
